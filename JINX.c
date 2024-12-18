@@ -83,8 +83,8 @@ int main(){
 
     
 restart:
-    printf("\n              WELCOME TO THE GAME \n    THE DEVELOPER CHALLENGES YOU TO BEAT JINX \n");
-    printf("\nWHAT DO YOU WANT TO PLAY?\n\n    1.JINX(PRESS 1)\n    2.ANOTHER PLAYER(PRESS 2)\n    3.QUIT(PRESS q)\n");
+    printf("\n              WELCOME TO THE GAME \n    THE DEVELOPER CHALLENGES YOU TO BEAT JINX \n           YOU CAN ALSO PLAY FRIENDLY\n");
+    printf("\n     WHO DO YOU WANT TO PLAY?\n\n    1.JINX(PRESS 1)\n    2.TWO PLAYER MODE(PRESS 2)\n    3.QUIT(PRESS q)\n");
 
     int choice;
     scanf(" %d",&choice);
@@ -127,6 +127,7 @@ restart:
 
 
 
+    again:
     printf("\nMAKE YOUR MOVE\n");                //user is going first
     scanf(" %c",&move);
 
@@ -138,30 +139,34 @@ restart:
     if(move== 'a' || move== 'A'){
         a='X';
     }
-    if(move== 'b' || move== 'B'){
+    else if(move== 'b' || move== 'B'){
         b='X';
     }
-    if(move== 'c' || move== 'C'){
+    else if(move== 'c' || move== 'C'){
         c='X';
     }
-    if(move== 'd' || move== 'D'){
+    else if(move== 'd' || move== 'D'){
         d='X';
     }
-    if(move== 'e' || move== 'E'){
+    else if(move== 'e' || move== 'E'){
         e='X';
     }
-    if(move== 'f' || move== 'F'){
+    else if(move== 'f' || move== 'F'){
         f='X';
     }
-    if(move== 'g' || move== 'G'){
+    else if(move== 'g' || move== 'G'){
         g='X';
     }
-    if(move== 'h' || move== 'H'){
+    else if(move== 'h' || move== 'H'){
         h='X';
     }
-    if(move== 'i' || move== 'i'){
+    else if(move== 'i' || move== 'i'){
         i='X';
-    } 
+    }
+    else{
+        printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
+        goto again;       
+    }
 
 
 
@@ -211,7 +216,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'b' || move== 'B'){
+    else if(move== 'b' || move== 'B'){
         if(validmove(b)){
         b='X';
         valid=1;
@@ -221,7 +226,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'c' || move== 'C'){
+    else if(move== 'c' || move== 'C'){
         if(validmove(c)){
         c='X';
         valid=1;
@@ -231,7 +236,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'd' || move== 'D'){
+    else if(move== 'd' || move== 'D'){
         if(validmove(d)){
         d='X';
         valid=1;
@@ -241,7 +246,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'e' || move== 'E'){
+    else if(move== 'e' || move== 'E'){
         if(validmove(e)){
         e='X';
         valid=1;
@@ -251,7 +256,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'f' || move== 'F'){
+    else if(move== 'f' || move== 'F'){
         if(validmove(f)){
         f='X';
         valid=1;
@@ -261,7 +266,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'g' || move== 'G'){
+    else if(move== 'g' || move== 'G'){
         if(validmove(g)){
         g='X';
         valid=1;
@@ -271,7 +276,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'h' || move== 'H'){
+    else if(move== 'h' || move== 'H'){
         if(validmove(h)){
         h='X';
         valid=1;
@@ -281,7 +286,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'i' || move== 'i'){
+    else if(move== 'i' || move== 'i'){
         if(validmove(i)){
         i='X';
         valid=1;
@@ -291,7 +296,12 @@ restart:
             valid=0;
         }
     }
+    else{
+            printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
+            valid=0;
+        }
     }
+
 
 
 
@@ -442,7 +452,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'b' || move== 'B'){
+    else if(move== 'b' || move== 'B'){
         if(validmove(b)){
         b='X';
         valid=1;
@@ -452,7 +462,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'c' || move== 'C'){
+    else if(move== 'c' || move== 'C'){
         if(validmove(c)){
         c='X';
         valid=1;
@@ -462,7 +472,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'd' || move== 'D'){
+    else if(move== 'd' || move== 'D'){
         if(validmove(d)){
         d='X';
         valid=1;
@@ -472,7 +482,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'e' || move== 'E'){
+    else if(move== 'e' || move== 'E'){
         if(validmove(e)){
         e='X';
         valid=1;
@@ -482,7 +492,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'f' || move== 'F'){
+    else if(move== 'f' || move== 'F'){
         if(validmove(f)){
         f='X';
         valid=1;
@@ -492,7 +502,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'g' || move== 'G'){
+    else if(move== 'g' || move== 'G'){
         if(validmove(g)){
         g='X';
         valid=1;
@@ -502,7 +512,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'h' || move== 'H'){
+    else if(move== 'h' || move== 'H'){
         if(validmove(h)){
         h='X';
         valid=1;
@@ -512,7 +522,7 @@ restart:
             valid=0;
         }
     }
-    if(move== 'i' || move== 'i'){
+    else if(move== 'i' || move== 'i'){
         if(validmove(i)){
         i='X';
         valid=1;
@@ -522,6 +532,10 @@ restart:
             valid=0;
         }
     }
+    else{
+            printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
+            valid=0;
+        }
     }
 
 
@@ -842,7 +856,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'b' || move== 'B'){
+    else if(move== 'b' || move== 'B'){
         if(validmove(b)){
         b='X';
         valid=1;
@@ -852,7 +866,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'c' || move== 'C'){
+    else if(move== 'c' || move== 'C'){
         if(validmove(c)){
         c='X';
         valid=1;
@@ -862,7 +876,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'd' || move== 'D'){
+    else if(move== 'd' || move== 'D'){
         if(validmove(d)){
         d='X';
         valid=1;
@@ -872,7 +886,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'e' || move== 'E'){
+    else if(move== 'e' || move== 'E'){
         if(validmove(e)){
         e='X';
         valid=1;
@@ -882,7 +896,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'f' || move== 'F'){
+    else if(move== 'f' || move== 'F'){
         if(validmove(f)){
         f='X';
         valid=1;
@@ -892,7 +906,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'g' || move== 'G'){
+    else if(move== 'g' || move== 'G'){
         if(validmove(g)){
         g='X';
         valid=1;
@@ -902,7 +916,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'h' || move== 'H'){
+    else if(move== 'h' || move== 'H'){
         if(validmove(h)){
         h='X';
         valid=1;
@@ -912,7 +926,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'i' || move== 'i'){
+    else if(move== 'i' || move== 'i'){
         if(validmove(i)){
         i='X';
         valid=1;
@@ -922,6 +936,10 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
+    else{
+            printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
+            valid=0;
+        }
     }
 
 
@@ -1251,7 +1269,7 @@ else if(i=='I')i='O';
             valid=0;
         }
     }
-    if(move== 'b' || move== 'B'){
+    else if(move== 'b' || move== 'B'){
         if(validmove(b)){
         b='X';
         valid=1;
@@ -1261,7 +1279,7 @@ else if(i=='I')i='O';
             valid=0;
         }
     }
-    if(move== 'c' || move== 'C'){
+    else if(move== 'c' || move== 'C'){
         if(validmove(c)){
         c='X';
         valid=1;
@@ -1271,7 +1289,7 @@ else if(i=='I')i='O';
             valid=0;
         }
     }
-    if(move== 'd' || move== 'D'){
+    else if(move== 'd' || move== 'D'){
         if(validmove(d)){
         d='X';
         valid=1;
@@ -1281,7 +1299,7 @@ else if(i=='I')i='O';
             valid=0;
         }
     }
-    if(move== 'e' || move== 'E'){
+    else if(move== 'e' || move== 'E'){
         if(validmove(e)){
         e='X';
         valid=1;
@@ -1291,7 +1309,7 @@ else if(i=='I')i='O';
             valid=0;
         }
     }
-    if(move== 'f' || move== 'F'){
+    else if(move== 'f' || move== 'F'){
         if(validmove(f)){
         f='X';
         valid=1;
@@ -1301,7 +1319,7 @@ else if(i=='I')i='O';
             valid=0;
         }
     }
-    if(move== 'g' || move== 'G'){
+    else if(move== 'g' || move== 'G'){
         if(validmove(g)){
         g='X';
         valid=1;
@@ -1311,7 +1329,7 @@ else if(i=='I')i='O';
             valid=0;
         }
     }
-    if(move== 'h' || move== 'H'){
+    else if(move== 'h' || move== 'H'){
         if(validmove(h)){
         h='X';
         valid=1;
@@ -1321,7 +1339,7 @@ else if(i=='I')i='O';
             valid=0;
         }
     }
-    if(move== 'i' || move== 'i'){
+    else if(move== 'i' || move== 'i'){
         if(validmove(i)){
         i='X';
         valid=1;
@@ -1331,6 +1349,10 @@ else if(i=='I')i='O';
             valid=0;
         }
     }
+    else{
+            printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
+            valid=0;
+        }
     }
 
 
@@ -1382,7 +1404,8 @@ print(a,b,c,d,e,f,g,h,i);
 
 
 
-    printf("MAKE YOUR MOVE\n");                
+again2:
+    printf("\nMAKE YOUR MOVE\n");                //jinx is going first
     scanf(" %c",&move);
 
     if(move=='q' || move=='Q'){
@@ -1393,38 +1416,31 @@ print(a,b,c,d,e,f,g,h,i);
     if(move== 'a' || move== 'A'){
         a='X';
     }
-    if(move== 'b' || move== 'B'){
+    else if(move== 'b' || move== 'B'){
         b='X';
     }
-    if(move== 'c' || move== 'C'){
+    else if(move== 'c' || move== 'C'){
         c='X';
     }
-    if(move== 'd' || move== 'D'){
+    else if(move== 'd' || move== 'D'){
         d='X';
     }
-    if(move== 'e' || move== 'E'){
-        if(validmove(e)){
-        e='X';
-        valid=1;
-        }
-        else{
-            printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
-            valid=0;
-        }
-    }
-    if(move== 'f' || move== 'F'){
+    else if(move== 'f' || move== 'F'){
         f='X';
     }
-    if(move== 'g' || move== 'G'){
+    else if(move== 'g' || move== 'G'){
         g='X';
     }
-    if(move== 'h' || move== 'H'){
+    else if(move== 'h' || move== 'H'){
         h='X';
     }
-    if(move== 'i' || move== 'i'){
+    else if(move== 'i' || move== 'i'){
         i='X';
-    } 
-
+    }
+    else{
+        printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
+        goto again2;       
+    }
 
     // print(a,b,c,d,e,f,g,h,i);
 
@@ -1462,7 +1478,7 @@ print(a,b,c,d,e,f,g,h,i);
     valid=0;
 
     while(valid==0){
-    printf("\nMAKE YOUR MOVE\n");        //user second move
+    printf("\nMAKE YOUR MOVE\n");        
     scanf(" %c",&move);
 
     if(move=='q' || move=='Q'){
@@ -1481,7 +1497,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'b' || move== 'B'){
+    else if(move== 'b' || move== 'B'){
         if(validmove(b)){
         b='X';
         valid=1;
@@ -1491,7 +1507,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'c' || move== 'C'){
+    else if(move== 'c' || move== 'C'){
         if(validmove(c)){
         c='X';
         valid=1;
@@ -1501,7 +1517,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'd' || move== 'D'){
+    else if(move== 'd' || move== 'D'){
         if(validmove(d)){
         d='X';
         valid=1;
@@ -1511,7 +1527,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'e' || move== 'E'){
+    else if(move== 'e' || move== 'E'){
         if(validmove(e)){
         e='X';
         valid=1;
@@ -1521,7 +1537,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'f' || move== 'F'){
+    else if(move== 'f' || move== 'F'){
         if(validmove(f)){
         f='X';
         valid=1;
@@ -1531,7 +1547,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'g' || move== 'G'){
+    else if(move== 'g' || move== 'G'){
         if(validmove(g)){
         g='X';
         valid=1;
@@ -1541,7 +1557,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'h' || move== 'H'){
+    else if(move== 'h' || move== 'H'){
         if(validmove(h)){
         h='X';
         valid=1;
@@ -1551,7 +1567,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'i' || move== 'i'){
+    else if(move== 'i' || move== 'i'){
         if(validmove(i)){
         i='X';
         valid=1;
@@ -1561,10 +1577,11 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
+    else{
+            printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
+            valid=0;
+        }
     }
-
-
-
 
 
 
@@ -1862,7 +1879,7 @@ print(a,b,c,d,e,f,g,h,i);
     valid=0;
 
     while(valid==0){
-    printf("\nMAKE YOUR MOVE\n");        //user third move
+    printf("\nMAKE YOUR MOVE\n");        
     scanf(" %c",&move);
 
     if(move=='q' || move=='Q'){
@@ -1881,7 +1898,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'b' || move== 'B'){
+    else if(move== 'b' || move== 'B'){
         if(validmove(b)){
         b='X';
         valid=1;
@@ -1891,7 +1908,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'c' || move== 'C'){
+    else if(move== 'c' || move== 'C'){
         if(validmove(c)){
         c='X';
         valid=1;
@@ -1901,7 +1918,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'd' || move== 'D'){
+    else if(move== 'd' || move== 'D'){
         if(validmove(d)){
         d='X';
         valid=1;
@@ -1911,7 +1928,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'e' || move== 'E'){
+    else if(move== 'e' || move== 'E'){
         if(validmove(e)){
         e='X';
         valid=1;
@@ -1921,7 +1938,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'f' || move== 'F'){
+    else if(move== 'f' || move== 'F'){
         if(validmove(f)){
         f='X';
         valid=1;
@@ -1931,7 +1948,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'g' || move== 'G'){
+    else if(move== 'g' || move== 'G'){
         if(validmove(g)){
         g='X';
         valid=1;
@@ -1941,7 +1958,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'h' || move== 'H'){
+    else if(move== 'h' || move== 'H'){
         if(validmove(h)){
         h='X';
         valid=1;
@@ -1951,7 +1968,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'i' || move== 'i'){
+    else if(move== 'i' || move== 'i'){
         if(validmove(i)){
         i='X';
         valid=1;
@@ -1961,8 +1978,11 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
+    else{
+            printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
+            valid=0;
+        }
     }
-
 
 
 
@@ -2265,10 +2285,10 @@ print(a,b,c,d,e,f,g,h,i);
 
 
 
-     valid=0;
+    valid=0;
 
     while(valid==0){
-    printf("\nMAKE YOUR MOVE\n");        //user second move
+    printf("\nMAKE YOUR MOVE\n");        
     scanf(" %c",&move);
 
     if(move=='q' || move=='Q'){
@@ -2287,7 +2307,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'b' || move== 'B'){
+    else if(move== 'b' || move== 'B'){
         if(validmove(b)){
         b='X';
         valid=1;
@@ -2297,7 +2317,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'c' || move== 'C'){
+    else if(move== 'c' || move== 'C'){
         if(validmove(c)){
         c='X';
         valid=1;
@@ -2307,7 +2327,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'd' || move== 'D'){
+    else if(move== 'd' || move== 'D'){
         if(validmove(d)){
         d='X';
         valid=1;
@@ -2317,7 +2337,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'e' || move== 'E'){
+    else if(move== 'e' || move== 'E'){
         if(validmove(e)){
         e='X';
         valid=1;
@@ -2327,7 +2347,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'f' || move== 'F'){
+    else if(move== 'f' || move== 'F'){
         if(validmove(f)){
         f='X';
         valid=1;
@@ -2337,7 +2357,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'g' || move== 'G'){
+    else if(move== 'g' || move== 'G'){
         if(validmove(g)){
         g='X';
         valid=1;
@@ -2347,7 +2367,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'h' || move== 'H'){
+    else if(move== 'h' || move== 'H'){
         if(validmove(h)){
         h='X';
         valid=1;
@@ -2357,7 +2377,7 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
-    if(move== 'i' || move== 'i'){
+    else if(move== 'i' || move== 'i'){
         if(validmove(i)){
         i='X';
         valid=1;
@@ -2367,8 +2387,11 @@ print(a,b,c,d,e,f,g,h,i);
             valid=0;
         }
     }
+    else{
+            printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
+            valid=0;
+        }
     }
-
 
 
 
@@ -2725,7 +2748,7 @@ while(a=='A' || b=='B' || c=='C' || d=='D' || e=='E' || f=='F' || g=='G' || h=='
             valid=0;
         }
     }
-    if(move== 'b' || move== 'B'){
+    else if(move== 'b' || move== 'B'){
         if(validmove(b)){
             if(count%2!=0){
             b='X';
@@ -2742,7 +2765,7 @@ while(a=='A' || b=='B' || c=='C' || d=='D' || e=='E' || f=='F' || g=='G' || h=='
             valid=0;
         }
     }
-    if(move== 'c' || move== 'C'){
+    else if(move== 'c' || move== 'C'){
         if(validmove(c)){
             if(count%2!=0){
             c='X';
@@ -2759,7 +2782,7 @@ while(a=='A' || b=='B' || c=='C' || d=='D' || e=='E' || f=='F' || g=='G' || h=='
             valid=0;
         }
     }
-    if(move== 'd' || move== 'D'){
+    else if(move== 'd' || move== 'D'){
         if(validmove(d)){
             if(count%2!=0){
             d='X';
@@ -2776,7 +2799,7 @@ while(a=='A' || b=='B' || c=='C' || d=='D' || e=='E' || f=='F' || g=='G' || h=='
             valid=0;
         }
     }
-    if(move== 'e' || move== 'E'){
+    else if(move== 'e' || move== 'E'){
         if(validmove(e)){
             if(count%2!=0){
             e='X';
@@ -2793,7 +2816,7 @@ while(a=='A' || b=='B' || c=='C' || d=='D' || e=='E' || f=='F' || g=='G' || h=='
             valid=0;
         }
     }
-    if(move== 'f' || move== 'F'){
+    else if(move== 'f' || move== 'F'){
         if(validmove(f)){
             if(count%2!=0){
             f='X';
@@ -2810,7 +2833,7 @@ while(a=='A' || b=='B' || c=='C' || d=='D' || e=='E' || f=='F' || g=='G' || h=='
             valid=0;
         }
     }
-    if(move== 'g' || move== 'G'){
+    else if(move== 'g' || move== 'G'){
         if(validmove(g)){
             if(count%2!=0){
             g='X';
@@ -2827,7 +2850,7 @@ while(a=='A' || b=='B' || c=='C' || d=='D' || e=='E' || f=='F' || g=='G' || h=='
             valid=0;
         }
     }
-    if(move== 'h' || move== 'H'){
+    else if(move== 'h' || move== 'H'){
         if(validmove(h)){
             if(count%2!=0){
             h='X';
@@ -2844,7 +2867,7 @@ while(a=='A' || b=='B' || c=='C' || d=='D' || e=='E' || f=='F' || g=='G' || h=='
             valid=0;
         }
     }
-    if(move== 'i' || move== 'i'){
+    else if(move== 'i' || move== 'i'){
         if(validmove(i)){
             if(count%2!=0){
             i='X';
@@ -2860,6 +2883,10 @@ while(a=='A' || b=='B' || c=='C' || d=='D' || e=='E' || f=='F' || g=='G' || h=='
             printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
             valid=0;
         }
+    }
+    else{
+            printf("!!! INVALID MOVE...TRY AGAIN  !!!!");
+            valid=0;
     }
 
     printf("\n");
