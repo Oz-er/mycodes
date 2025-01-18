@@ -1,0 +1,19 @@
+from stegano import lsb
+import os
+
+# Replace this with the path to your image folder
+folder_path = "C:/Users/YourUsername/Images"
+
+# Analyze each image for hidden messages
+for file_name in os.listdir(folder_path):
+    if file_name.lower().endswith('.png'):
+        file_path = os.path.join(folder_path, file_name)
+        try:
+            # Try to reveal a hidden message using LSB steganography
+            secret_message = lsb.reveal(file_path)
+            if secret_message:
+                print(f"Hidden message in {file_name}: {secret_message}")
+            else:
+                print(f"No hidden message in {file_name}.")
+        except Exception as e:
+            print(f"Error analyzing {file_name}: {e}")
