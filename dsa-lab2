@@ -1,0 +1,88 @@
+#include<bits/stdc++.h>
+using namespace std;
+// #define size 100
+
+
+
+void push(int *a,int b,int *now,int *top){
+    if(*now>=5){
+        printf("stack overflow\n");
+        return;
+    }
+    a[*now]=b;
+    *top=*now;
+    (*now)++;
+    
+    for(int i=0;i<*now;i++) {
+        cout<<a[i]<<endl;
+    } 
+  
+}
+
+void pop(int *a,int *top){
+    if(*top==0){
+        cout<<"stack undeflow\n"<<endl;
+        return;
+    }
+
+    // cout<<a[*top]<<endl;
+
+    printf("stack after popping\n");
+    for(int i=0;i<*top;i++) {
+        cout<<a[i]<<endl;
+    } 
+    
+    (*top)--;
+}
+
+
+
+int main(){
+    int a[5];
+    int now=0;
+    int top;
+
+ 
+    
+    
+    while(1){
+        
+    printf("do you want to 1.push or 2.pop?\n");
+    int c;
+    cin>>c;
+    if(c==3){
+        printf("exiting the program\n");
+        return 0;
+    }
+
+    else if(c==1){
+        printf("how many values do you want to push?\n");
+        int k;
+        cin>>k;
+        while(k--){
+        
+        printf("enter the value : \n");
+        int d;
+        cin>>d;
+        push(a,d,&now,&top);
+        }
+    }
+
+    else if(c==2){
+        printf("how many values do you want to pop?\n");
+        int k;
+        cin>>k;
+        while(k--){
+        pop(a,&top);
+        }
+        
+    }
+    
+    }
+
+
+
+
+    
+
+}
