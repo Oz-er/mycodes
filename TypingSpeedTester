@@ -1,0 +1,484 @@
+#include<stdio.h>
+#include<string.h>
+#include<time.h>
+#include<stdlib.h>
+#include<ncurses.h>
+
+#define TIME_LIMIT 60
+
+
+int main() {
+
+    char words[301][20];
+    int count=0;
+
+
+    //fgets(address of the first element, total elements to get, from the location it will get the elements)
+    while(count<300 && fgets(words[count],sizeof(words[count]),stdin)!=NULL){
+        size_t len=strlen(words[count]);
+        if(len>0 && words[count][len-1]=='\n'){
+            words[count][len-1]='\0';
+        }
+        count++;
+    }
+
+    freopen("/dev/tty", "r", stdin);
+
+    initscr();
+    curs_set(0);
+    cbreak();
+    noecho();
+    // keypad(stdscr,TRUE);
+
+    start_color();
+    init_pair(1, COLOR_GREEN, COLOR_BLACK);  // Correct input
+    init_pair(2, COLOR_RED, COLOR_BLACK);    // Incorrect input
+    init_pair(3, COLOR_WHITE, COLOR_BLACK);    // Incorrect input
+
+    again:
+
+    int screen_height, screen_width;
+    getmaxyx(stdscr, screen_height, screen_width);  // Get screen dimensions
+
+    // The strings to display
+    char *message1 = "I feel the need... the need for speed.";
+    char *message2 = "Press any key to start...";
+    char *message3 = "Press 'q' to quit...";
+
+    int message1_length = strlen(message1);
+    int message2_length = strlen(message2);
+    int message3_length = strlen(message3);
+
+    // Center the text
+    int message1_x = (screen_width - message1_length) / 2;
+    int message2_x = (screen_width - message2_length) / 2;
+    int message3_x = (screen_width - message3_length) / 2;
+
+    // New names for box-related variables
+    int box_top_left_y = screen_height / 2 - 1;   // Start at the center of the screen
+
+    // New box dimensions
+    int box_inner_width = screen_width / 2;        // Width of the box
+    int box_inner_height = 6;                      // Height of the box
+    int box_left_margin = (screen_width - box_inner_width) / 2; // Center the box horizontally
+    int box_top_margin = (screen_height - box_inner_height) / 2; // Center the box vertically
+
+    // Draw the double border box (green)
+    attron(COLOR_PAIR(3));
+    for (int i = 0; i < box_inner_width; i++) {
+        mvprintw(box_top_margin, box_left_margin + i, "=");  // Top border
+        mvprintw(box_top_margin + box_inner_height - 1, box_left_margin + i, "=");  // Bottom border
+    }
+
+    for (int i = 0; i < box_inner_height; i++) {
+        mvprintw(box_top_margin + i, box_left_margin, "=");  // Left border
+        mvprintw(box_top_margin + i, box_left_margin + box_inner_width - 1, "=");  // Right border
+    }
+    mvprintw(box_top_margin, box_left_margin, "+");  // Top-left corner
+    mvprintw(box_top_margin, box_left_margin + box_inner_width - 1, "+");  // Top-right corner
+    mvprintw(box_top_margin + box_inner_height - 1, box_left_margin, "+");  // Bottom-left corner
+    mvprintw(box_top_margin + box_inner_height - 1, box_left_margin + box_inner_width - 1, "+");  // Bottom-right corner
+    attroff(COLOR_PAIR(3));
+
+    // Print the text inside the box
+    attron(COLOR_PAIR(1));
+    mvprintw(box_top_margin + 1, message1_x, "%s", message1);
+    attroff(COLOR_PAIR(1));
+
+    attron(COLOR_PAIR(2));
+    mvprintw(box_top_margin + 2, message2_x, "%s", message2);
+    attroff(COLOR_PAIR(2));
+
+    attron(COLOR_PAIR(2));
+    mvprintw(box_top_margin + 3, message3_x, "%s", message3);
+    attroff(COLOR_PAIR(2));
+
+    refresh();  // Refresh the screen to show the changes
+
+    // Wait for user input to proceed
+    int user_input = getch();
+    if (user_input == 'q') {
+        endwin(); // Quit the program if 'q' is pressed
+        return 0;
+    }
+    
+    else {
+        clear();
+    }
+   
+    // refresh();
+    //y=4 occupied
+    int max_row, max_col;
+    getmaxyx(stdscr, max_row, max_col);  // Get screen dimensions
+
+    // The message we want to print
+    char *msg[] = {
+        "WELCOME TO THE WPM TESTER",
+        "CHOOSE A DIFFICULTY:",
+        "1. EASY    (PRESS 1)",
+        "2. MEDIUM  (PRESS 2)",
+        "3. HARD    (PRESS 3)"
+    };
+
+    int num_lines = sizeof(msg) / sizeof(msg[0]);
+    int start_y = max_row / 4;  // Place in upper quarter
+    int text_width;
+
+    for (int i = 0; i < num_lines; i++) {
+        text_width = strlen(msg[i]);
+        int start_x = (max_col - text_width) / 2;  // Center horizontally
+        mvprintw(start_y + i, start_x, "%s", msg[i]);  // Print each line
+    }
+
+
+
+    refresh();
+
+
+    int choice;
+
+
+    srand(time(NULL));
+
+    int max_words;
+
+    char paragraph[700]="";
+
+    while(1){
+
+    move(start_y+7,(max_col - text_width) / 2);
+    choice = getch() - '0';  // Convert char to int    printw("\n%d",choice);
+    refresh();
+
+    if(choice==1){
+        max_words=20;
+        for(int i=0;i<20;i++){
+            int random_index = rand()%100;
+            strcat(paragraph,words[random_index]);
+            if(i!=max_words-1){
+                strcat(paragraph," ");
+            }
+        }
+        break;
+    }
+
+    else if(choice==2){
+        max_words=40;
+        for(int i=0;i<40;i++){
+            int random_index = (rand() % 100) + 100;
+            strcat(paragraph,words[random_index]);
+            if(i!=max_words-1){
+                strcat(paragraph," ");
+            }
+        }
+        break;
+    }
+
+    else if(choice==3){
+        max_words=60;
+        for(int i=0;i<60;i++){
+            int random_index = (rand()%100)+200;
+            if (strlen(words[random_index]) > 0) {
+            strcat(paragraph,words[random_index]);
+            }
+            if(i!=max_words-1){
+                strcat(paragraph," ");
+            }
+        }
+        break;
+    }
+
+    else{
+        printw("INVALID INPUT,PRESS PROPERLY");
+        refresh();
+        move(5,0);
+        clrtoeol();
+        refresh();
+    }
+    }
+
+    char given_words[max_words][20];
+    int index=0;
+    int letter=0;
+
+    for(int i=0;i<strlen(paragraph);i++){
+        if(paragraph[i]==' '){
+            given_words[index][letter] = '\0';
+            index++;
+            letter=0;
+            continue;
+        }
+        given_words[index][letter]=paragraph[i];
+        letter++;
+    }
+    given_words[index][letter] = '\0';
+
+
+
+
+
+    //initializing a first letter counter that keeps track of the position of every first word of the array 
+
+    int word_x[max_words];
+    word_x[0]=0;
+
+    for(int i=1;i<max_words;i++){
+        word_x[i]=word_x[i-1]+strlen(given_words[i-1])+1;
+        if(i%5==0)word_x[i]=0;
+    }
+    //length of 1 word+space
+
+    clear();
+
+    curs_set(1);
+    int lines = 2;
+    int cols = 0;
+    for(int i = 0; i < max_words; i++){
+    mvprintw(lines, cols, "%s", given_words[i]);
+    cols += strlen(given_words[i]) + 1; // Move the cursor forward
+
+    if((i + 1) % 5== 0){ // After every 4 words, move to the next line
+        lines++;
+        cols = 0;
+    }
+    }
+    refresh();
+
+
+    int yf,xf;
+    yf=2;
+    xf=0;
+
+    int row,col;
+    getmaxyx(stdscr,row,col);
+
+ 
+    printw("\n\nTYPE THE WORDS SHOWN ABOVE : ");
+    int countdown_y,countdown_x;
+    getyx(stdscr,countdown_y,countdown_x);
+
+
+    //f and g are the starting position of my input
+    int f,g;
+    getyx(stdscr,f,g);
+
+
+    time_t start_time,current_time;
+    int elapsed=0;
+    start_time=time(NULL);
+    // nodelay(stdscr,TRUE);
+
+        int k=0;
+        int l=0;
+        int typing=0;
+        int line=0;
+        int correct_word=0;
+        int correct_char=0;
+        int mistakes=0;
+        int total_time=0;
+
+
+    while(1){
+
+        current_time=time(NULL);
+        elapsed=(int)(current_time-start_time);
+
+        //countdown at the top left
+        mvprintw(0,0,"time left: %d sec",TIME_LIMIT-elapsed);
+        if(elapsed>=TIME_LIMIT){
+            total_time=TIME_LIMIT;
+            break;
+        }
+
+        if(k>=max_words){
+            total_time=elapsed;
+            break;
+        }
+
+        move(f,g+l);
+
+
+        char input=getch();
+
+
+        if((input==KEY_BACKSPACE ||input==127|| input=='\b') && l>0 && typing>0){
+            l--;
+            line--;
+            typing--;
+            // printw("/b");
+            move(f, getcurx(stdscr) - 1);  // position the input cursor back
+            delch();
+            // move(f, getcurx(stdscr) - 1);
+            // refresh();                  // overwrite that position with a blank  
+            attron(COLOR_PAIR(3));
+            mvaddch(yf,word_x[k]+l,given_words[k][l]);
+            attroff(COLOR_PAIR(3));
+            move(f,g+l);
+            refresh();
+        }
+
+        else if(input==27){
+            clear();
+            mvprintw(0,0,"ESC PRESSED. START AGAIN?\n1.YES(PRESS 1)\n2.NO(PRESS 2)");
+            refresh();
+            while(1){
+
+            move(3,0);
+            int b=getch();
+
+            if(b=='1'){
+                goto again;
+            }
+            else if(b=='2'){
+                endwin();  //issue here
+                return 0;
+            }
+            else{
+                move(4,0);
+                printw("INCORRECT KEY");
+                refresh();
+                continue;
+            }
+            }   
+        }
+
+        
+
+        else if(input==' ' || input ==32){
+            if(strlen(given_words[k])==l){
+                correct_word++;
+            }
+            typing=0;
+            l=0;
+            k++;
+            line++;
+            if(k%5==0){
+                yf++;
+            }
+            move(f,g);
+            clrtoeol();
+            refresh();
+            // move(f,g);
+        }
+
+        else if(input==given_words[k][l]){
+            if(typing>=0 && typing<strlen(given_words[k])){
+            printw("%c",input);
+            correct_char++;
+            typing++;
+            attron(COLOR_PAIR(1));
+            mvaddch(yf,word_x[k]+l,given_words[k][l]);
+            attroff(COLOR_PAIR(1));
+            l++;
+            move(f,g+l);
+            refresh();
+            }
+        }
+
+        else if(input!=given_words[k][l] && input>=97 &&input<=122){
+            if(typing>=0 && typing<strlen(given_words[k])){
+            printw("%c",input);
+            mistakes++;
+            typing++;
+            line++;
+            if(line>=col){
+                yf++;
+                line=0;
+            }
+            attron(COLOR_PAIR(2));
+            mvaddch(yf,word_x[k]+l,given_words[k][l]);
+            attroff(COLOR_PAIR(2));
+            l++;
+            move(f,g+l);
+            refresh();
+        }
+        }
+
+        else{
+            continue;
+        }
+
+    }
+
+
+    clear();
+    curs_set(0);
+
+    float wpm, accuracy, cps;
+    int box_start_x, box_start_y, box_width, box_height;
+    int horizontal, vertical;
+
+    getmaxyx(stdscr, vertical, horizontal); // Get terminal size
+
+    wpm = (correct_word * 60.0) / total_time;
+    accuracy = ((float)(correct_char - mistakes) / correct_char) * 100;
+    cps = (float)correct_char / total_time;
+
+    // Box dimensions
+    box_width = 30;  // Width of the stats box
+    box_height = 6;  // Height of the stats box
+
+    // Center the box
+    box_start_x = (horizontal - box_width) / 2;
+    box_start_y = (vertical - box_height) / 2;
+
+    // Initialize colors
+    start_color();
+    init_pair(1, COLOR_CYAN, COLOR_BLACK);   // Cyan for box border
+    init_pair(2, COLOR_YELLOW, COLOR_BLACK); // Yellow for stats text
+
+    clear();
+
+    // Draw the box border with cyan color
+    attron(COLOR_PAIR(1));
+    for (int i = 0; i < box_width; i++) {
+        mvprintw(box_start_y, box_start_x + i, "-"); // Top border
+        mvprintw(box_start_y + box_height, box_start_x + i, "-"); // Bottom border
+    }
+
+    for (int i = 0; i < box_height; i++) {
+        mvprintw(box_start_y + i, box_start_x, "|"); // Left border
+        mvprintw(box_start_y + i, box_start_x + box_width, "|"); // Right border
+    }
+
+    // Box corners
+    mvprintw(box_start_y, box_start_x, "+");
+    mvprintw(box_start_y, box_start_x + box_width, "+");
+    mvprintw(box_start_y + box_height, box_start_x, "+");
+    mvprintw(box_start_y + box_height, box_start_x + box_width, "+");
+    attroff(COLOR_PAIR(1));
+
+    // Print centered stats inside the box with yellow color
+    attron(COLOR_PAIR(2));
+    mvprintw(box_start_y + 1, box_start_x + 3, "WPM       : %.2f", wpm);
+    mvprintw(box_start_y + 2, box_start_x + 3, "CPS       : %.2f", cps);
+    mvprintw(box_start_y + 3, box_start_x + 3, "Mistakes  : %.d", mistakes);
+
+    mvprintw(box_start_y + 4, box_start_x + 3, "ACCURACY  : %.2f%%", accuracy);
+    mvprintw(box_start_y + 5, box_start_x + 3, "Total Time: %d sec", total_time);
+    attroff(COLOR_PAIR(2));
+
+    refresh();
+    
+
+    mvprintw(box_start_y + 7, box_start_x + 3, "PRESS 'r' TO RESTART");
+    mvprintw(box_start_y + 8, box_start_x + 3, "PRESS any key TO QUIT");
+    refresh();
+
+    char d=getch();  // Wait for user input before exiting
+
+    if(d=='r'){
+        clear();
+        goto again;
+    }
+    else{
+    endwin();
+    return 0;
+    }
+
+    }
+
+
+
+
+    
